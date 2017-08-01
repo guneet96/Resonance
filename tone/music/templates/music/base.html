@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}RESONANCE{% endblock %}</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.js"></script>
+	<link rel="stylesheet" href=" {% static 'music/1.css' %} ">
+</head>
+<body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+            <div class="navbar-header">
+              <a class ="navbar-brand" href= "{% url 'music:index' %}"></a>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+              </button>
+                <a class="navbar-brand" href="{% url 'music:index' %}"><b>RESONANCE</b></a>
+            </div>
+            <!-- individual items for navbar -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="top-navbar">
+              <ul class="nav navbar-nav">
+            <li class="">
+                <a href="{% url 'music:index' %}">
+                <span class="glyphicon glyphicon-music" ></span>&nbsp;MUSIC
+                </a>
+            </li>
+             <li class="">
+                <a href="{% url 'music:index' %}">
+                <span class="glyphicon glyphicon-user" ></span>&nbsp;PROFILE
+                </a>
+            </li>
+              </ul>
+              <form class="navbar-form navbar-right" role="search" method="get" action="#">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" name="q" value="">
+            </div>
+            <button type="submit" class="btn btn-default">SUBMIT</button>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+            
+        </nav>
+    
+
+	{% block body %}
+	{% endblock %}
+</body>
+    <div class="row">
+    <div class="span12">
+        <div class="well">
+            <div align = "center">
+            <h5>This website is created and maintained by Guneet as a part learning Django framework for some college project. None of the content above belongs to Guneet.</h5>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><h5><a href = "https://github.com/guneet96">Github</a></h5></li>
+                    <li><h5><a href = "https://www.linkedin.com/in/guneet-dhillon-2a89407b/">LinkedIn</a></h5></li>
+                    <li><h5><a href = "https://plus.google.com/u/0/104890764425494282798">Google+</a></h5></li>
+                    <li><h5><a href = "https://www.facebook.com/gsgsdhillon">Facebook</a></h5></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </div>
+</html>

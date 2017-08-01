@@ -1,0 +1,13 @@
+Django NOTES : 
+
+	We canchange the field of Image type model to FileField, so as to ease the process of uploading images.
+	-python manage.py makemigrations music
+	-python mange.py migrate
+	
+
+User Registration : 
+	django comes with ability  to create users
+
+	user registration is done in tone manually
+	in music file create python file forms.py
+	

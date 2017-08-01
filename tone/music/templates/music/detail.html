@@ -1,0 +1,84 @@
+{% extends 'music/base.html' %}
+{% block title %}{{ album }}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+<div class="container-fluid songs-container">
+
+    <div class="row">
+
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{% url 'music:detail' album.id %}">
+                        {% if album.album_cover %}
+                            <img src="{{ album.album_cover }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                    <h1>{{ album.album_title }} <small>{{ album.genre }}</small></h1>
+                    <h2>{{ album.artist }}</h2>
+                </div>
+            </div>
+        </div>
+	
+
+        <!-- Right Song Info -->
+        <div class="col-sm-8 col-md-9">
+
+        <!--    <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'music:detail' album.id %}">View All</a></li>
+            </ul> -->
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h3>All Songs</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <table class="table">
+                        <tbody>
+                        
+                        {% for song in album.song_set.all %}
+                        <tr>
+				        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                              <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="{{ song.id }}">
+                                  <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ song.id }}" aria-expanded="true" aria-controls="collapseOne">
+                                        {{ song.song_title }}
+                                    </a>
+                                  </h4>
+                                </div>
+                                <div id="collapse{{ song.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ song.id }}">
+                                  <div class="panel-body">
+                                      <iframe width="400" height="250" src="{{ song.e_link }}" frameborder="0" allowfullscreen></iframe>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>  
+                        </tr>
+                        {% endfor %}
+                        
+                        </tbody>
+                        {{ album.desc }}
+                    </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

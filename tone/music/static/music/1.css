@@ -1,0 +1,21 @@
+{
+    background : white url("images/2.jpg");
+}
+.navbar{
+    border-radius: 0;
+}
+
+.push{
+    height : 15px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+#content{
+  position: absolute;
+  top: 120px;
+  width: 10%;
+  background-color: green;
+  height: 800px; /* assumed height, use an appropriate value */
+  overflow: scroll;
+}
